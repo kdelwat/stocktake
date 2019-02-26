@@ -5,18 +5,13 @@ const Vision = require("vision");
 const Path = require("path");
 const Nunjucks = require("nunjucks");
 
-const server = Hapi.server({
-    host: "localhost",
-    port: 3000
-});
+const routes = [require("./routes/home")];
 
-const context = {
-    title: "Prices"
-};
-
-const start = async () => {
+const registerPlugins = async server => {
+    // Vision for templating
     await server.register(Vision);
 
+    // Initialise Nunjucks as the template engine
     server.views({
         engines: {
             html: {
@@ -39,16 +34,19 @@ const start = async () => {
             }
         },
         path: Path.join(__dirname, "templates"),
-        context
+        context: require("./context")
+    });
+};
+
+const start = async () => {
+    const server = Hapi.server({
+        host: "localhost",
+        port: 3000
     });
 
-    server.route({
-        method: "GET",
-        path: "/",
-        handler: {
-            view: "index"
-        }
-    });
+    await registerPlugins(server);
+
+    routes.map(route => route(server));
 
     try {
         await server.start();
@@ -58,7 +56,6 @@ const start = async () => {
     }
 
     console.log("Server online at", server.info.uri);
-    console.log(__dirname);
 };
 
 start();
