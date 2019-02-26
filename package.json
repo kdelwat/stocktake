@@ -1,0 +1,13 @@
+{
+  "name": "prices",
+  "version": "1.0.0",
+  "description": "A fast, tiny site for financial data",
+  "main": "index.js",
+  "repository": "https://github.com/kdelwat/prices",
+  "author": "Cadel Watson",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "hapi": "^18.1.0"
+  }
+}
