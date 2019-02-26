@@ -2,12 +2,21 @@
   "name": "prices",
   "version": "1.0.0",
   "description": "A fast, tiny site for financial data",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/kdelwat/prices",
   "author": "Cadel Watson",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
-    "hapi": "^18.1.0"
+    "hapi": "^18.1.0",
+    "nunjucks": "^3.1.7",
+    "path": "^0.12.7",
+    "vision": "^5.4.4"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
   }
 }
