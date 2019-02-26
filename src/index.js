@@ -5,7 +5,13 @@ const Vision = require("vision");
 const Path = require("path");
 const Nunjucks = require("nunjucks");
 
-const routes = [require("./routes/home")];
+const services = {
+    iex: new (require("./services/iex"))()
+};
+
+const methods = [require("./methods/getStockData")(services.iex)];
+
+const routes = [require("./routes/home"), require("./routes/stock")];
 
 const registerPlugins = async server => {
     // Vision for templating
@@ -46,7 +52,11 @@ const start = async () => {
 
     await registerPlugins(server);
 
-    routes.map(route => route(server));
+    methods.map(method => {
+        server.method(method.name, method.method, {});
+    });
+
+    routes.map(route => server.route(route(server)));
 
     try {
         await server.start();

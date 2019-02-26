@@ -1,9 +1,7 @@
-module.exports = server => {
-    server.route({
-        method: "GET",
-        path: "/",
-        handler: {
-            view: "index"
-        }
-    });
-};
+module.exports = server => ({
+    method: "GET",
+    path: "/",
+    handler: {
+        view: "index"
+    }
+});
