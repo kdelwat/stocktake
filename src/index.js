@@ -2,6 +2,7 @@
 
 const Hapi = require("hapi");
 const Vision = require("vision");
+const Inert = require("inert");
 const Path = require("path");
 const Nunjucks = require("nunjucks");
 
@@ -11,7 +12,11 @@ const services = {
 
 const methods = [require("./methods/getStockData")(services.iex)];
 
-const routes = [require("./routes/home"), require("./routes/stock")];
+const routes = [
+    require("./routes/css"),
+    require("./routes/home"),
+    require("./routes/stock")
+];
 
 const registerPlugins = async server => {
     // Vision for templating
@@ -42,6 +47,9 @@ const registerPlugins = async server => {
         path: Path.join(__dirname, "templates"),
         context: require("./context")
     });
+
+    // Inert for static file serving
+    await server.register(Inert);
 };
 
 const start = async () => {

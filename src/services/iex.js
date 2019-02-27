@@ -32,6 +32,16 @@ class IexService {
     async getCompany(symbol) {
         return IexService.get(`${this.api}/stock/${symbol}/company`);
     }
+
+    async getHistoricalPriceData(symbol, timeframe) {
+        if (!timeframe) {
+            return IexService.get(`${this.api}/stock/${symbol}/chart`);
+        } else {
+            return IexService.get(
+                `${this.api}/stock/${symbol}/chart/${timeframe}`
+            );
+        }
+    }
 }
 
 module.exports = IexService;

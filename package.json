@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "hapi": "^18.1.0",
+    "inert": "^5.1.2",
+    "node-chartist": "^1.0.5",
     "node-fetch": "^2.3.0",
     "nunjucks": "^3.1.7",
     "path": "^0.12.7",
