@@ -10,7 +10,10 @@ const services = {
     iex: new (require("./services/iex"))()
 };
 
-const methods = [require("./methods/getStockData")(services.iex)];
+const methods = [
+    require("./methods/getStockData")(services.iex),
+    require("./methods/getStockList")(services.iex)
+];
 
 const routes = [
     require("./routes/css"),

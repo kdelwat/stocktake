@@ -26,6 +26,10 @@ class IexService {
     async getQuote(symbol) {
         return IexService.get(`${this.api}/stock/${symbol}/quote`);
     }
+
+    async getList(type) {
+        return IexService.get(`${this.api}/stock/market/list/${type}`);
+    }
 }
 
 module.exports = IexService;

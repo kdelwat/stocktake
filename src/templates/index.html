@@ -1,5 +1,30 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<p>Hello world!</p>
+<h2>Most active</h2>
+<ul>
+    {% for stock in mostActive %}
+        <li>{{stock.companyName}} ({{stock.symbol}}): {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
+    {% else %}
+        <li>Failed to load data</li>
+    {% endfor %}
+</ul>
+
+<h2>Gainers</h2>
+<ul>
+    {% for stock in gainers %}
+    <li>{{stock.companyName}} ({{stock.symbol}}): {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
+    {% else %}
+    <li>Failed to load data</li>
+    {% endfor %}
+</ul>
+
+<h2>Losers</h2>
+<ul>
+    {% for stock in losers %}
+    <li>{{stock.companyName}} ({{stock.symbol}}): {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
+    {% else %}
+    <li>Failed to load data</li>
+    {% endfor %}
+</ul>
 {% endblock %}
