@@ -1,9 +1,12 @@
 module.exports = iexService => ({
     name: "getStockData",
-    method: async symbol => {
+    method: async (symbol, timeframe) => {
         return {
             company: await iexService.getCompany(symbol),
-            historicalPriceData: await iexService.getHistoricalPriceData(symbol)
+            historicalPriceData: await iexService.getHistoricalPriceData(
+                symbol,
+                timeframe
+            )
         };
     }
 });
