@@ -3,4 +3,15 @@
 {% block content %}
 <p><a href="{{website}}">{{name}} ({{symbol}})</a></p>
 {{chart | safe}}
+
+<ul>
+    <li><a href="/stock/{{symbol}}/5y">5y</a></li>
+    <li><a href="/stock/{{symbol}}/2y">2y</a></li>
+    <li><a href="/stock/{{symbol}}/1y">1y</a></li>
+    <li><a href="/stock/{{symbol}}/ytd">ytd</a></li>
+    <li><a href="/stock/{{symbol}}/6m">6m</a></li>
+    <li><a href="/stock/{{symbol}}/3m">3m</a></li>
+    <li><a href="/stock/{{symbol}}/1m">1m</a></li>
+    <li><a href="/stock/{{symbol}}/1d">1d</a></li>
+</ul>
 {% endblock %}
