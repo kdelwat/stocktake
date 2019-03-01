@@ -22,6 +22,10 @@ class IexService {
             );
         }
     }
+
+    async getQuote(symbol) {
+        return IexService.get(`${this.api}/stock/${symbol}/quote`);
+    }
 }
 
 module.exports = IexService;

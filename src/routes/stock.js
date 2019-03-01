@@ -1,3 +1,4 @@
+const moment = require("moment");
 const chartStockPrice = require("../graphics/chartStockPrice");
 
 module.exports = server => ({
@@ -8,7 +9,8 @@ module.exports = server => ({
 
         const {
             company: { symbol, companyName: name, website },
-            historicalPriceData
+            historicalPriceData,
+            quote
         } = await server.methods["getStockData"](
             request.params.symbol,
             timeframe
@@ -16,6 +18,15 @@ module.exports = server => ({
 
         const chart = await chartStockPrice(historicalPriceData);
 
-        return h.view("stock", { symbol, name, website, chart });
+        const latestPriceUpdate = moment.utc(quote.latestUpdate).fromNow();
+
+        return h.view("stock", {
+            symbol,
+            name,
+            website,
+            chart,
+            latestPriceUpdate,
+            quote
+        });
     }
 });

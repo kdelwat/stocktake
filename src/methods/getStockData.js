@@ -6,7 +6,8 @@ module.exports = iexService => ({
             historicalPriceData: await iexService.getHistoricalPriceData(
                 symbol,
                 timeframe
-            )
+            ),
+            quote: await iexService.getQuote(symbol)
         };
     }
 });

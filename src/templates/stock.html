@@ -1,7 +1,10 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<p><a href="{{website}}">{{name}} ({{symbol}})</a></p>
+<h1><a href="{{website}}">{{name}} ({{symbol}})</a></h1>
+
+<h2>Historical data</h2>
+
 {{chart | safe}}
 
 <ul>
@@ -14,4 +17,13 @@
     <li><a href="/stock/{{symbol}}/1m">1m</a></li>
     <li><a href="/stock/{{symbol}}/1d">1d</a></li>
 </ul>
+
+
+<h2>Live data</h2>
+
+<p>Exchange: {{quote.primaryExchange}}</p>
+<p>Latest price: {{quote.latestPrice}} ({{quote.latestSource}})</p>
+<p>Latest price updated: {{latestPriceUpdate}}</p>
+<p>Volume: {{quote.latestVolume}}</p>
+<p>Change: {{quote.change}} ({{quote.changePercent}})</p>
 {% endblock %}
