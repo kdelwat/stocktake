@@ -25,6 +25,13 @@ const routes = [
     require("./routes/search")
 ];
 
+const extensions = [
+    {
+        events: "onPreResponse",
+        extension: require("./extensions/maskInternalErrors")
+    }
+];
+
 const registerPlugins = async server => {
     // Vision for templating
     await server.register(Vision);
@@ -72,6 +79,10 @@ const start = async () => {
     });
 
     routes.map(route => server.route(route(server)));
+
+    extensions.map(extension =>
+        server.ext(extension.events, extension.extension)
+    );
 
     try {
         await server.start();

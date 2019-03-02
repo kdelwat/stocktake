@@ -1,0 +1,7 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+Oops! An error occurred.
+
+{{error.statusCode}} - {{error.payload.error}}
+{% endblock %}
