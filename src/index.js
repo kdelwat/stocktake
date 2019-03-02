@@ -12,13 +12,15 @@ const services = {
 
 const methods = [
     require("./methods/getStockData")(services.iex),
-    require("./methods/getStockList")(services.iex)
+    require("./methods/getStockList")(services.iex),
+    require("./methods/searchStocks")()
 ];
 
 const routes = [
     require("./routes/css"),
     require("./routes/home"),
-    require("./routes/stock")
+    require("./routes/stock"),
+    require("./routes/search")
 ];
 
 const registerPlugins = async server => {

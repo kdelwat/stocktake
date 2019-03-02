@@ -12,6 +12,7 @@
     "debug": "node $NODE_DEBUG_OPTION src/index.js"
   },
   "dependencies": {
+    "fuse.js": "^3.4.2",
     "hapi": "^18.1.0",
     "inert": "^5.1.2",
     "moment": "^2.24.0",

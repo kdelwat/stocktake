@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<h2>Results</h2>
+<ul>
+    {% for result in searchResults %}
+    <li><a href="/stock/{{result.item.symbol}}">{{result.item.name}} ({{result.item.symbol}})</a></li>
+    {% else %}
+    <li>No results found</li>
+    {% endfor %}
+</ul>
+{% endblock %}
