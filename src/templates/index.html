@@ -1,35 +1,76 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<form action="/search" method="get">
-    <label for="search">Search</label>
-    <input type="search" name="search" id="search">
-</form>
+<header>
+    <form action="/search" method="get">
+        <label for="search">Search</label>
+        <input type="search" name="search" id="search">
+    </form>
+</header>
 
-<h2>Most active</h2>
-<ul>
-    {% for stock in mostActive %}
-        <li><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a>: {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
-    {% else %}
-        <li>Failed to load data</li>
-    {% endfor %}
-</ul>
+<main>
+    <section>
+        <h2>In focus</h2>
 
-<h2>Gainers</h2>
-<ul>
-    {% for stock in gainers %}
-    <li><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a>: {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
-    {% else %}
-    <li>Failed to load data</li>
-    {% endfor %}
-</ul>
+        <table>
+            <tr>
+                <th>Stock</th>
+                <th>Price (USD)</th>
+                <th>Change (USD)</th>
+                <th>Volume</th>
+            </tr>
+            {% for stock in inFocus %}
+            <tr>
+                <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
+                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
+                <td>{{stock.change}}</td>
+                <td>{{stock.latestVolume}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
 
-<h2>Losers</h2>
-<ul>
-    {% for stock in losers %}
-    <li><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a>: {{stock.latestPrice}} {{stock.change}} ({{stock.changePercent}})</li>
-    {% else %}
-    <li>Failed to load data</li>
-    {% endfor %}
-</ul>
+    <section>
+        <h2>Gainers</h2>
+        <table>
+            <tr>
+                <th>Stock</th>
+                <th>Price (USD)</th>
+                <th>Change (USD)</th>
+                <th>Volume</th>
+            </tr>
+            {% for stock in gainers %}
+            <tr>
+                <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
+                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
+                <td>{{stock.change}}</td>
+                <td>{{stock.latestVolume}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+
+    <section>
+        <h2>Losers</h2>
+        <table>
+            <tr>
+                <th>Stock</th>
+                <th>Price (USD)</th>
+                <th>Change (USD)</th>
+                <th>Volume</th>
+            </tr>
+            {% for stock in losers %}
+            <tr>
+                <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
+                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
+                <td>{{stock.change}}</td>
+                <td>{{stock.latestVolume}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+</main>
+
 {% endblock %}
