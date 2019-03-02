@@ -17,6 +17,8 @@ const methods = [
 ];
 
 const routes = [
+    require("./routes/fallback"),
+
     require("./routes/css"),
     require("./routes/home"),
     require("./routes/stock"),
