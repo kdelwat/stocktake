@@ -2,9 +2,9 @@
 
 {% block content %}
 <header>
+    <h1>Pric.es</h1>
     <form action="/search" method="get">
-        <label for="search">Search</label>
-        <input type="search" name="search" id="search">
+        <input type="search" name="search" id="search" placeholder="Search for a symbol or company">
     </form>
 </header>
 
@@ -12,7 +12,7 @@
     <section>
         <h2>In focus</h2>
 
-        <table>
+        <table cellspacing="0">
             <tr>
                 <th>Stock</th>
                 <th>Price (USD)</th>
@@ -22,8 +22,12 @@
             {% for stock in inFocus %}
             <tr>
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
-                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
-                <td>{{stock.change}}</td>
+                <td>{{(stock.latestPrice).toFixed(2)}}</td>
+                {% if stock.change >= 0 %}
+                    <td class="positive">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
+                {% else %}
+                    <td class="negative">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
+                {% endif %}
                 <td>{{stock.latestVolume}}</td>
             </tr>
             {% endfor %}
@@ -32,7 +36,7 @@
 
     <section>
         <h2>Gainers</h2>
-        <table>
+        <table cellspacing="0">
             <tr>
                 <th>Stock</th>
                 <th>Price (USD)</th>
@@ -42,8 +46,8 @@
             {% for stock in gainers %}
             <tr>
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
-                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
-                <td>{{stock.change}}</td>
+                <td>{{(stock.latestPrice).toFixed(2)}}</td>
+                <td>{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 <td>{{stock.latestVolume}}</td>
             </tr>
             {% endfor %}
@@ -53,7 +57,7 @@
 
     <section>
         <h2>Losers</h2>
-        <table>
+        <table cellspacing="0">
             <tr>
                 <th>Stock</th>
                 <th>Price (USD)</th>
@@ -63,8 +67,8 @@
             {% for stock in losers %}
             <tr>
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
-                <td>{{stock.latestPrice}} ({{stock.changePercent}})</td>
-                <td>{{stock.change}}</td>
+                <td>{{(stock.latestPrice).toFixed(2)}}</td>
+                <td>{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 <td>{{stock.latestVolume}}</td>
             </tr>
             {% endfor %}

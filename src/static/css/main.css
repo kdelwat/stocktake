@@ -1,0 +1,68 @@
+body {
+    font-family: sans-serif;
+
+    color: #1a2a3a;
+    padding: 1em;
+}
+
+section:not(:first-child) {
+    margin-top: 1em;
+}
+
+section > h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+section > table {
+    width: 100%;
+    text-align: left;
+    border: 2px #1a2a3a solid;
+}
+
+th:not(:first-child) {
+    text-align: right;
+}
+
+td:not(:first-child) {
+    text-align: right;
+}
+
+tr:first-child {
+    background: #cccccc;
+}
+
+tr:nth-child(even) {
+    background: #f3f3f3;
+}
+
+th, td {
+    padding: 3px;
+}
+
+a {
+    color: inherit;
+}
+
+.positive {
+    color: #66ff99;
+}
+
+.negative {
+    color: #ff9966;
+}
+
+#search {
+    border: 2px #1a2a3a solid;
+    padding: 0.5em 1em 0.5em 1em;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+}
+
+header > h1 {
+    font-size: 3em;
+    margin-top: 0;
+}
