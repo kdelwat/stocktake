@@ -1,5 +1,17 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-Oops! Page not found.
+<header>
+    <h1><a href="/">{{title}}</a></h1>
+    <form action="/search" method="get">
+        <input type="search" name="search" id="search" placeholder="Search for a symbol or company">
+    </form>
+</header>
+
+<main>
+    <section>
+        <br><br>
+        <h2>Sorry, page not found! Click to go <a href="/">home</a>.</h2>
+    </section>
+</main>
 {% endblock %}
