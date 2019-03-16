@@ -12,6 +12,7 @@
     <section>
         <h2>Results</h2>
 
+        {% if searchResults.length %}
         <table cellspacing="0">
             <tr>
                 <th>Company</th>
@@ -24,6 +25,9 @@
             </tr>
             {% endfor %}
         </table>
+        {% else %}
+        <p>No results found.</p>
+        {% endif %}
     </section>
 </main>
 {% endblock %}
