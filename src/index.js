@@ -81,7 +81,7 @@ const start = async () => {
                     constructor: require("catbox-redis"),
                     options: {
                         partition: "cache",
-                        url: process.env.REDIS || "127.0.0.1"
+                        url: process.env.REDIS_URL || "127.0.0.1"
                     }
                 }
             }
