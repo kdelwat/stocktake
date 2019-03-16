@@ -188,8 +188,8 @@ svg.ct-chart-bar, svg.ct-chart-line{
 }
 
 #timeframe-options li {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
 }
 
 footer {
