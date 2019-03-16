@@ -66,3 +66,32 @@ header > h1 {
     font-size: 3em;
     margin-top: 0;
 }
+
+@media screen and (min-width: 992px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header form {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        display: flex;
+    }
+
+    section {
+        width: 33%;
+        margin: 1em;
+    }
+
+    section:not(:first-child) {
+        margin-top: 1em;
+    }
+
+
+}
