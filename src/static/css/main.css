@@ -184,6 +184,7 @@ svg.ct-chart-bar, svg.ct-chart-line{
     display: flex;
     justify-content: right;
     list-style: none;
+    padding-left: 20px;
     /*margin-top: 1.25em;*/
 }
 
