@@ -24,7 +24,7 @@
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
                 <td>{{(stock.latestPrice).toFixed(2)}}</td>
                 {% if stock.change >= 0 %}
-                    <td class="positive">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
+                    <td class="positive">+{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% else %}
                     <td class="negative">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% endif %}
@@ -48,7 +48,7 @@
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
                 <td>{{(stock.latestPrice).toFixed(2)}}</td>
                 {% if stock.change >= 0 %}
-                <td class="positive">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
+                <td class="positive">+{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% else %}
                 <td class="negative">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% endif %}
@@ -73,7 +73,7 @@
                 <td><a href="/stock/{{stock.symbol}}">{{stock.companyName}} ({{stock.symbol}})</a></td>
                 <td>{{(stock.latestPrice).toFixed(2)}}</td>
                 {% if stock.change >= 0 %}
-                <td class="positive">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
+                <td class="positive">+{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% else %}
                 <td class="negative">{{(stock.change).toFixed(2)}} ({{(stock.changePercent * 100).toFixed(2)}}%)</td>
                 {% endif %}
