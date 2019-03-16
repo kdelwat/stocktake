@@ -14,6 +14,11 @@ section > h2 {
     margin-bottom: 0.5em;
 }
 
+section > h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
 section > table {
     width: 100%;
     text-align: left;
@@ -30,6 +35,14 @@ td:not(:first-child) {
 
 tr:first-child {
     background: #cccccc;
+}
+
+.no-header tr:first-child {
+    background: inherit;
+}
+
+.highlight-first-column td:first-child {
+    font-weight: bold;
 }
 
 tr:nth-child(even) {
@@ -50,6 +63,10 @@ a {
 
 .negative {
     color: #ff9966;
+}
+
+.with-border {
+    border: 2px #1a2a3a solid;
 }
 
 #search {
@@ -85,13 +102,60 @@ header > h1 {
     }
 
     section {
-        width: 33%;
+        flex-grow: 1;
         margin: 1em;
     }
 
     section:not(:first-child) {
         margin-top: 1em;
     }
+}
 
+/* From https://stackoverflow.com/a/52521513 */
+.ct-label.ct-horizontal.ct-end {
+    writing-mode: vertical-lr;
+    transform: translateY(-8%);
+    white-space: nowrap;
+}
 
+/* From https://stackoverflow.com/a/42666530 */
+svg.ct-chart-bar, svg.ct-chart-line{
+    overflow: visible;
+}
+
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: #1a2a3a;
+}
+
+.ct-point {
+    stroke-width: 8px;
+}
+
+.ct-line {
+    stroke-width: 3px;
+}
+
+.ct-grid {
+    stroke-dasharray: 0;
+    stroke: #e7e7e7;
+}
+
+.ct-chart {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timeframe-options {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: right;
+    list-style: none;
+    /*margin-top: 1.25em;*/
+}
+
+#timeframe-options li {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }

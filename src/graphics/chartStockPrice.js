@@ -8,7 +8,9 @@ module.exports = async historicalData => {
         height: 200,
         chartPadding: {
             right: 40
-        }
+        },
+        lineSmooth: false,
+        fullWidth: true
     };
 
     const chooseEveryNthLabel = Math.floor(

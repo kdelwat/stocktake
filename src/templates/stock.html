@@ -1,29 +1,51 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<h1><a href="{{website}}">{{name}} ({{symbol}})</a></h1>
+<header>
+    <h1>Pric.es</h1>
+    <form action="/search" method="get">
+        <input type="search" name="search" id="search" placeholder="Search for a symbol or company">
+    </form>
+</header>
 
-<h2>Historical data</h2>
+<main>
+    <section>
+        <h2><a href="{{website}}">{{name}} ({{symbol}})</a></h2>
+        <table class="no-header highlight-first-column" cellspacing="0">
+            <tr><td>Exchange</td><td> {{quote.primaryExchange}} ({{quote.latestSource}})</td></tr>
+            <tr><td>Latest price</td><td> {{quote.latestPrice}}</td></tr>
+            <tr><td>Latest price updated</td><td> {{latestPriceUpdate}}</td></tr>
+            <tr><td>Volume</td><td> {{quote.latestVolume}}</td></tr>
+            <tr><td>Change</td>
+                {% if quote.change >= 0 %}
+                <td class="positive">+{{(quote.change).toFixed(2)}} ({{(quote.changePercent * 100).toFixed(2)}}%)</td>
+                {% else %}
+                <td class="negative">{{(quote.change).toFixed(2)}} ({{(quote.changePercent * 100).toFixed(2)}}%)</td>
+                {% endif %}
+            </tr>
+        </table>
+    </section>
 
-{{chart | safe}}
+    <section>
+        <h3>Historical data</h3>
+        <div class="with-border">
 
-<ul>
-    <li><a href="/stock/{{symbol}}/5y">5y</a></li>
-    <li><a href="/stock/{{symbol}}/2y">2y</a></li>
-    <li><a href="/stock/{{symbol}}/1y">1y</a></li>
-    <li><a href="/stock/{{symbol}}/ytd">ytd</a></li>
-    <li><a href="/stock/{{symbol}}/6m">6m</a></li>
-    <li><a href="/stock/{{symbol}}/3m">3m</a></li>
-    <li><a href="/stock/{{symbol}}/1m">1m</a></li>
-    <li><a href="/stock/{{symbol}}/1d">1d</a></li>
-</ul>
+            {{chart | safe}}
 
+            <ul id="timeframe-options">
+                <li><a href="/stock/{{symbol}}/5y">5y</a></li>
+                <li><a href="/stock/{{symbol}}/2y">2y</a></li>
+                <li><a href="/stock/{{symbol}}/1y">1y</a></li>
+                <li><a href="/stock/{{symbol}}/ytd">ytd</a></li>
+                <li><a href="/stock/{{symbol}}/6m">6m</a></li>
+                <li><a href="/stock/{{symbol}}/3m">3m</a></li>
+                <li><a href="/stock/{{symbol}}/1m">1m</a></li>
+                <li><a href="/stock/{{symbol}}/1d">1d</a></li>
+            </ul>
 
-<h2>Live data</h2>
+        </div>
 
-<p>Exchange: {{quote.primaryExchange}}</p>
-<p>Latest price: {{quote.latestPrice}} ({{quote.latestSource}})</p>
-<p>Latest price updated: {{latestPriceUpdate}}</p>
-<p>Volume: {{quote.latestVolume}}</p>
-<p>Change: {{quote.change}} ({{quote.changePercent}})</p>
+    </section>
+</main>
+
 {% endblock %}
