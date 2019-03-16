@@ -5,16 +5,17 @@ module.exports = server => ({
     method: "GET",
     path: "/stock/{symbol}/{timeframe?}",
     handler: async (request, h) => {
+        const { symbol: requestSymbol } = request.params;
         const timeframe = request.params.timeframe || "1m";
 
-        const {
-            company: { symbol, companyName: name, website },
-            historicalPriceData,
-            quote
-        } = await server.methods["getStockData"](
-            request.params.symbol,
+        const { symbol, companyName: name, website } = await server.methods[
+            "getCompanyData"
+        ](requestSymbol);
+        const historicalPriceData = await server.methods["getHistoricalData"](
+            requestSymbol,
             timeframe
         );
+        const quote = await server.methods["getStockData"](requestSymbol);
 
         quote.marketCap = Number(quote.marketCap).toLocaleString();
         quote.latestVolume = Number(quote.latestVolume).toLocaleString();

@@ -1,12 +1,12 @@
 module.exports = iexService => ({
-    name: "getStockData",
+    name: "getCompanyData",
     method: async symbol => {
-        return await iexService.getQuote(symbol);
+        return await iexService.getCompany(symbol);
     },
     options: {
         cache: {
             cache: "redisCache",
-            expiresIn: 5 * 60 * 1000, // Cache for 5 minutes
+            expiresIn: 8 * 3600 * 1000, // Cache for 8 hours
             generateTimeout: 2000
         }
     }

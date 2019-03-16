@@ -5,7 +5,6 @@ const Vision = require("vision");
 const Inert = require("inert");
 const Path = require("path");
 const Nunjucks = require("nunjucks");
-const CatboxRedis = require("catbox-redis");
 
 const services = {
     iex: new (require("./services/iex"))()
@@ -13,6 +12,8 @@ const services = {
 
 const methods = [
     require("./methods/getStockData")(services.iex),
+    require("./methods/getCompanyData")(services.iex),
+    require("./methods/getHistoricalData")(services.iex),
     require("./methods/getStockList")(services.iex),
     require("./methods/searchStocks")()
 ];
