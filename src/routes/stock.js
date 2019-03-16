@@ -28,8 +28,6 @@ module.exports = server => ({
 
         const latestPriceUpdate = moment.utc(quote.latestUpdate).fromNow();
 
-        console.log(quote);
-
         return h.view("stock", {
             symbol,
             name,
