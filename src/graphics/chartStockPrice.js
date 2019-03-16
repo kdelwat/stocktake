@@ -2,10 +2,10 @@ const generateChart = require("node-chartist");
 
 const NUMBER_OF_LABELS = 10;
 
-module.exports = async historicalData => {
+module.exports = async (historicalData, width, height) => {
     const options = {
-        width: 700,
-        height: 200,
+        width: width,
+        height: height,
         chartPadding: {
             right: 40
         },

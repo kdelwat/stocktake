@@ -19,7 +19,11 @@ module.exports = server => ({
         quote.marketCap = Number(quote.marketCap).toLocaleString();
         quote.latestVolume = Number(quote.latestVolume).toLocaleString();
 
-        const chart = await chartStockPrice(historicalPriceData);
+        const charts = {
+            small: await chartStockPrice(historicalPriceData, 400, 200),
+            medium: await chartStockPrice(historicalPriceData, 700, 200),
+            large: await chartStockPrice(historicalPriceData, 1000, 200)
+        };
 
         const latestPriceUpdate = moment.utc(quote.latestUpdate).fromNow();
 
@@ -29,7 +33,7 @@ module.exports = server => ({
             symbol,
             name,
             website,
-            chart,
+            charts,
             latestPriceUpdate,
             quote
         });

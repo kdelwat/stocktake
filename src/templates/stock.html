@@ -42,7 +42,17 @@
         <h3>Historical data</h3>
         <div class="with-border">
 
-            {{chart | safe}}
+            <div class="chart-small">
+                {{charts.small | safe}}
+            </div>
+
+            <div class="chart-medium">
+                {{charts.medium | safe}}
+            </div>
+
+            <div class="chart-large">
+                {{charts.large | safe}}
+            </div>
 
             <ul id="timeframe-options">
                 <li><a href="/stock/{{symbol}}/5y">5y</a></li>
