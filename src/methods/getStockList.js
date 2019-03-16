@@ -3,6 +3,9 @@ module.exports = iexService => ({
     method: async type => {
         const data = await iexService.getList(type);
         console.log(data);
-        return data;
+        return data.map(s => ({
+            ...s,
+            latestVolume: Number(s.latestVolume).toLocaleString()
+        }));
     }
 });
