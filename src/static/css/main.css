@@ -1,8 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
+    padding: 0;
+    margin: 0;
+
     font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     color: #1a2a3a;
-    padding: 1em;
+}
+
+main {
+    flex-grow: 1;
+    margin: 1em;
 }
 
 section:not(:first-child) {
@@ -80,6 +94,7 @@ h1 a {
 }
 
 header {
+    padding: 1em;
     width: 100%;
 }
 
@@ -112,6 +127,18 @@ header > h1 {
 
     section:not(:first-child) {
         margin-top: 1em;
+    }
+
+    body {
+        justify-content: space-between;
+    }
+
+    header {
+        padding: 2em;
+    }
+
+    footer {
+        margin: 1em 2em 1em 2em !important;
     }
 }
 
@@ -162,4 +189,19 @@ svg.ct-chart-bar, svg.ct-chart-line{
 #timeframe-options li {
     margin-left: 0.5em;
     margin-right: 0.5em;
+}
+
+footer {
+    font-style: italic;
+    font-size: 0.8em;
+    margin: 1em 1em 1em 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+footer p {
+    margin-bottom: 0.2em;
+    margin-top: 0;
 }
