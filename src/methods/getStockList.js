@@ -7,5 +7,12 @@ module.exports = iexService => ({
             ...s,
             latestVolume: Number(s.latestVolume).toLocaleString()
         }));
+    },
+    options: {
+        cache: {
+            cache: "redisCache",
+            expiresIn: 3600 * 1000, // Cache for one hour
+            generateTimeout: 2000
+        }
     }
 });

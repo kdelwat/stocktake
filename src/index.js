@@ -5,6 +5,7 @@ const Vision = require("vision");
 const Inert = require("inert");
 const Path = require("path");
 const Nunjucks = require("nunjucks");
+const CatboxRedis = require("catbox-redis");
 
 const services = {
     iex: new (require("./services/iex"))()
@@ -71,13 +72,25 @@ const registerPlugins = async server => {
 const start = async () => {
     const server = Hapi.server({
         host: "0.0.0.0",
-        port: process.env.PORT || 3000
+        port: process.env.PORT || 3000,
+        cache: [
+            {
+                name: "redisCache",
+                provider: {
+                    constructor: require("catbox-redis"),
+                    options: {
+                        partition: "cache",
+                        url: process.env.REDIS || "127.0.0.1"
+                    }
+                }
+            }
+        ]
     });
 
     await registerPlugins(server);
 
     methods.map(method => {
-        server.method(method.name, method.method, {});
+        server.method(method.name, method.method, method.options);
     });
 
     routes.map(route => server.route(route(server)));

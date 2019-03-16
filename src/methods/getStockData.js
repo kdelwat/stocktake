@@ -9,5 +9,12 @@ module.exports = iexService => ({
             ),
             quote: await iexService.getQuote(symbol)
         };
+    },
+    options: {
+        cache: {
+            cache: "redisCache",
+            expiresIn: 3600 * 1000, // Cache for one hour (TODO: drop this for quote)
+            generateTimeout: 2000
+        }
     }
 });
