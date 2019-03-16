@@ -13,6 +13,13 @@ module.exports = async (historicalData, width, height) => {
         fullWidth: true
     };
 
+    if (historicalData.length > 50) {
+        const CHOOSE_EVERY = Math.floor(historicalData.length / 50);
+        historicalData = historicalData.filter(
+            (h, i) => i % CHOOSE_EVERY === 0
+        );
+    }
+
     const chooseEveryNthLabel = Math.floor(
         historicalData.length / NUMBER_OF_LABELS
     );
