@@ -20,6 +20,8 @@ const routes = [
     require("./routes/fallback"),
 
     require("./routes/css"),
+    require("./routes/image"),
+    require("./routes/manifest"),
     require("./routes/home"),
     require("./routes/stock"),
     require("./routes/search")
