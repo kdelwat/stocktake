@@ -13,9 +13,9 @@
         <h2><a href="{{website}}">{{name}} ({{symbol}})</a></h2>
         <table class="no-header highlight-first-column" cellspacing="0">
             <tr><td>Exchange</td><td> {{quote.primaryExchange}} ({{quote.latestSource}})</td></tr>
-            <tr><td>Latest price</td><td> {{quote.latestPrice}}</td></tr>
+            <tr><td>Latest price</td><td> ${{quote.latestPrice}}</td></tr>
             <tr><td>Latest price updated</td><td> {{latestPriceUpdate}}</td></tr>
-            <tr><td>Volume</td><td> {{quote.latestVolume}}</td></tr>
+            <tr><td>Volume</td><td>{{quote.latestVolume}}</td></tr>
             <tr><td>Change</td>
                 {% if quote.change >= 0 %}
                 <td class="positive">+{{(quote.change).toFixed(2)}} ({{(quote.changePercent * 100).toFixed(2)}}%)</td>
@@ -23,6 +23,18 @@
                 <td class="negative">{{(quote.change).toFixed(2)}} ({{(quote.changePercent * 100).toFixed(2)}}%)</td>
                 {% endif %}
             </tr>
+            <tr><td>Market cap</td><td>${{quote.marketCap}}</td></tr>
+            <tr><td>P/E ratio</td><td>${{quote.peRatio}}</td></tr>
+            <tr><td>52-week high</td><td>${{quote.week52High}}</td></tr>
+            <tr><td>52-week low</td><td>${{quote.week52Low}}</td></tr>
+            <tr><td>Change YTD</td>
+                {% if quote.ytdChange >= 0 %}
+                <td class="positive">+{{(quote.ytdChange * 100).toFixed(2)}}%</td>
+                {% else %}
+                <td class="negative">{{(quote.ytdChange * 100).toFixed(2)}}%</td>
+                {% endif %}
+            </tr>
+
         </table>
     </section>
 

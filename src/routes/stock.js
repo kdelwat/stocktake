@@ -16,9 +16,14 @@ module.exports = server => ({
             timeframe
         );
 
+        quote.marketCap = Number(quote.marketCap).toLocaleString();
+        quote.latestVolume = Number(quote.latestVolume).toLocaleString();
+
         const chart = await chartStockPrice(historicalPriceData);
 
         const latestPriceUpdate = moment.utc(quote.latestUpdate).fromNow();
+
+        console.log(quote);
 
         return h.view("stock", {
             symbol,
