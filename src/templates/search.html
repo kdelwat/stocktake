@@ -1,12 +1,29 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<h2>Results</h2>
-<ul>
-    {% for result in searchResults %}
-    <li><a href="/stock/{{result.item.symbol}}">{{result.item.name}} ({{result.item.symbol}})</a></li>
-    {% else %}
-    <li>No results found</li>
-    {% endfor %}
-</ul>
+<header>
+    <h1><a href="/">{{title}}</a></h1>
+    <form action="/search" method="get">
+        <input type="search" name="search" id="search" placeholder="Search for a symbol or company">
+    </form>
+</header>
+
+<main>
+    <section>
+        <h2>Results</h2>
+
+        <table cellspacing="0">
+            <tr>
+                <th>Company</th>
+                <th>Symbol</th>
+            </tr>
+            {% for result in searchResults %}
+            <tr>
+                <td><a href="/stock/{{result.item.symbol}}">{{result.item.name}}</a></td>
+                <td>{{result.item.symbol}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</main>
 {% endblock %}
